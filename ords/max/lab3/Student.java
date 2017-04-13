@@ -1,4 +1,4 @@
-package lab3m;
+package lab3;
 
 import java.util.GregorianCalendar;
 import java.util.HashMap;
