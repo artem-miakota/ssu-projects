@@ -1,11 +1,12 @@
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <fstream>
+
 using namespace std;
 
-int main()
-{
-    int amount = 0;
+int main(int argc, char** argv) {
+int amount = 0;
     for (int i = 1; i <= 10000; i++) {
         if (i % 7 == 0 && i % 2 != 0) amount++;
     }
@@ -21,7 +22,7 @@ int main()
     
     float av = sum / amount, diff = array[amount-1] - av;
         
-    printf("Amount of numbers: %7.3d\nSum: %7.3d\nAverage value: %7.3f\nMax value: %7.3d\nDifference between max and average values: %7.3f\nEnter name for report file or leave blank for omitting this step: ", amount, sum, av, array[amount-1], diff);
+    printf("Кількість чисел: %7.3d\nСума: %7.3d\nСереднє значення: %7.3f\nНайбільше значення: %7.3d\nРізниця між найбільшим і середнім значеннями: %7.3f\nВведіть назву звіту: ", amount, sum, av, array[amount-1], diff);
     string fname;
     getline(cin, fname, '\n');
     if(fname == "") {
@@ -29,18 +30,26 @@ int main()
     } else {
         ofstream myfile;
         myfile.open (fname + ".txt");
-        myfile << "Elements amount: " << amount << "\n"
-        << "Sum: " << sum << "\n"
-        << "Average value: " << av << "\n"
-        << "Max value: " << array[amount-1] << "\n"
-        << "Difference between max and average values: " << diff << "\n"
-        << "Array elements: " << "\n[";
+        myfile << "Кількість чисел: " << amount
+        << "\nСума: " << sum
+        << "\nСереднє значення: " << av
+        << "\nНайбільше значення: " << array[amount-1]
+        << "\nРізниця між найбільшим і середнім значеннями: " << diff
+        << "\nЕлементи масиву: [\n";
         for (int i = 0; i < amount-1; i++) {
-            if (i % 10 == 0 && i != 0) myfile << "\n";
-            myfile << array[i] << "  ";
+            if (array[i] < 10) myfile << "   ";
+            else if (array[i] < 100) myfile << "  ";
+            else if (array[i] < 1000) myfile << " ";
+            myfile << array[i];
+            
+            if ((i + 1) % 10 == 0)
+                myfile << "\n";
+            else
+                myfile << "  ";
         }
         myfile << array[amount-1] << "]\n";
         myfile.close();
         return 1;
     }   
 }
+
