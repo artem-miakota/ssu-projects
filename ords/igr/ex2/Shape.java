@@ -1,6 +1,7 @@
+package ex2;
+
 public interface Shape {
-    public static final double PI = Math.PI;
-    
-    public double getSquare();
-    public double getPerimeter();
+    double getSqare();
+    double getPerimeter();
+    double getDiagonal();
 }
