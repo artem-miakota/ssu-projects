@@ -72,9 +72,9 @@ public class Student extends Homo {
         Integer _mark = 0;
         boolean check = false;
         
-        System.out.print("Введіть університет студента: ");
+        System.out.print("Введіть університет: ");
         _univercity = scanner.nextLine();
-        System.out.print("Введіть курс студента: ");
+        System.out.print("Введіть курс: ");
         _course = scanner.nextLine();
         System.out.print("Введіть код спеціальності: ");
         _code = scanner.nextLine();
